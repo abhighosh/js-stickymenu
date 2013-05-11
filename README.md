@@ -2,7 +2,7 @@
 
 Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping menus and other ui elements visible at the top of a page.
 
-* Source: [https://github.com/h5bp/html5-boilerplate](https://github.com/h5bp/html5-boilerplate)
+* Source: [https://github.com/abhighosh/stickymenu/archive/master.zip](https://github.com/abhighosh/stickymenu/archive/master.zip)
 * Homepage: [http://demos.abhighosh.co.uk/stickymenu](http://demos.abhighosh.co.uk/stickymenu)
 
 
@@ -19,10 +19,10 @@ Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping men
 3. Include stickymenu.js with a path to the containing folder
 
 ```javascript
-<script src="stickymenu-1.0.0.js"></script>
+<script src="js/stickymenu-1.0.0.js"></script>
  ```
 
-4. Initialise sticky menu for an element.
+4. Initialise sticky menu.
 
 ```javascript
 <script>
