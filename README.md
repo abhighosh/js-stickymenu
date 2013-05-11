@@ -37,3 +37,7 @@ $(document).ready(function(){
 
 * Touch friendly
 * Cross browser compatible (IE6+, Chrome, Safari, Firefox)
+
+## Examples and options
+
+* Examples coming soon!
