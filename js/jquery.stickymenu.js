@@ -47,7 +47,7 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 	if(this.options.touchDisable == true){
 	disable = true;
 	} 
-	}else{
+	}else if('ontouchstart' in document){
 		//Otherwise touchUI mode is enabled
 		touchUI = true;
 	}
