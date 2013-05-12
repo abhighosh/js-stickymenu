@@ -1,63 +1,60 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+ <html class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>Stickymenu - A touch friendly sticky menu plugin for jQuery</title>
+        <title>Stickymenu - A touch and responsive design friendly sticky menu plugin for jQuery</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, maximum-scale=1.0">
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <meta name="viewport" content="width=device-width; initial-scale=1.0;">
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
 
-        <!-- Add your site or application content here -->
+	
 		<div class="wrapper">
 		
-        <div class="header">STICKYMENU FOR JQUERY
-		<div class="subtitle">A script by Abhi Ghosh</div>
-		</div>
-		<div class="left-column">
+        <div id="header" class="header">
 		
+		STICKYMENU FOR JQUERY
+		<div class="subtitle">A responsive, touch friendly sticky element script by Abhi Ghosh</div>
+		</div>
+		
+		
+		
+		
+		<div class="left-column">
 <ul id="sticky"><li><a href="#download">Download</a></li><li><a href="#usage">Instructions</a></li><li><a href="#background">Background</a></li><li><a href="#options">Options</a></li></ul>
+
 </div>
 		<div class="right-column">
-	<a id="download"></a>
-		<div id="scroll-down" class="align-right">
-		<img src="images/circle_scroll_down.gif" alt="Scroll down"/>
+		
+		<div style="text-align: center; width: 100%;">
+		<img src="images/circle_touch_friendly.gif" alt="Scroll down" style="width: 190px; height: 190px"/>
+		<img src="images/circle_cross_browser.gif" alt="Scroll down" style="width: 190px; height: 190px"/>
+		<img src="images/circle_scroll_down.gif" alt="Scroll down" style="width: 190px; height: 190px"/>
 		</div>
-		
-		<div class="align-left">
-<img src="images/circle_touch_friendly.gif" alt="Touch friendly"/>
-</div>
 
-
-<div class="center-wrapper">
-<div class="centered-image">
-<img src="images/circle_cross_browser.gif" alt="Touch friendly"/>
-</div>
-</div>
+		<a class="bookmark" id="download">&nbsp;</a>
 		
-<div class="clearfix"></div>
-		
-		<div class="centered" style="padding: 10px 10px 10px 0;">
+		<div id="downloadbar" class="downloadbar" style="padding: 10px 10px 10px 0;">
 		<a class="btn-primary" href="https://github.com/abhighosh/stickymenu/archive/master.zip">Download plugin</a>
 		<a class="btn-primary" href="https://github.com/abhighosh/stickymenu">Fork on Github</a>
 		</div>
-		<div class="centered" style="padding-top: 10px;">Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping menus and other ui elements visible at the top of a page.
+		
+		<div class="centered" style="padding-top: 10px;">Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping ui elements visible at the top of a page.
 		</div>
-	<a id="usage"></a>
+		
 		<div class="small-left" style="padding-top: 30px;">
-		Touch friendly! (with animations) <br/>Cross browser compatible!<br/> (IE6+, Safari, FIrefox, Chrome)
-		<br/><br/>To use simply:
+		Unlike other sticky scripts, stickymenu is compatible with responsive layouts and won't break with your css.
+		<br/>
+		Stickymenu is animates smoothly on touch devices, and is cross browser compatible (IE6+, Safari, Firefox, Chrome).
+		<br/><br/>
+		
+		<a class="bookmark" id="usage">&nbsp;</a>
+		<div class="centered" style="padding-bottom: 10px;">Instructions</div>
+		
+		To use simply:
 		<br/>1. Include <a href="http://jquery.com/">jQuery</a>
 		<br/>2. Include stickymenu.js
 		<br/>3. Initialise stickymenu
@@ -65,6 +62,7 @@
 		The following example initialises stickymenu for the element with id 'stickymenu'.
 		<br/><br/>
 		</div>
+		
 		
 		<div class="code">
 		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="font-weight: bold">&lt;</span>script src<span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;jquery.js&quot;</span><span style="font-weight: bold">&gt;&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
@@ -75,32 +73,21 @@
   });
 <span style="font-weight: bold">&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
 </pre></div>
-
-
 		</div>
-	
 		
-		<div class="spacer">&nbsp;</div>
-		<a id="background"></a>
-		<div class="center-wrapper">
-		<div id="keep-going1" class="centered-image">
-		<img src="images/circle_keep_going.gif" alt="Scroll down"/>
-		</div>
-		</div>
-		<div class="clearfix"></div>
+		
+		<a class="bookmark" id="background">&nbsp;</a>
 		<div class="centered" style="padding-bottom: 10px;">Background</div>
 		<div class="small-left" style="padding: 0 20px 20px 20px;">
-		Stickymenu.js was born after being unable to find a sticky menu script that handles touch events in a smooth and graceful way. Additionally, almost all such scripts fail to adequately cater to antiquated browsers without position:fixed support such as IE6. Using position:absolute on these browsers leads to a jerky experience.
+		Stickymenu.js was born after being unable to find a sticky menu script that handles touch events in a smooth way. Additionally, almost all such scripts fail to adequately cater to antiquated browsers without position:fixed support such as IE6. Using position:absolute on these browsers leads to a jerky experience.
 		<br/><br/>
 		Stickymenu.js solves these problems by animating elements appropriately when the scroll event is triggered on touch browsers or older browsers, and exploiting absolute and fixed positioning on supported browsers.
+		<br/><br/>
+		Sticky menu.js includes the option for a minimum width, below which the effect is disabled; essential for responsive layouts.
 		</div>
 		
 		
-		<div class="spacer">&nbsp;</div>
-		<a id="options"></a>
-		<div id="keep-going2" class="align-left"><img src="images/circle_keep_going.gif" alt="Scroll down"/></div>
-		<div class="clearfix"></div>
-		
+		<a class="bookmark" id="options">&nbsp;</a>
 		<div class="centered" style="padding-bottom: 10px;">Options</div>
 		
 		<div class="small-left" style="padding: 0 20px 20px 20px;">
@@ -117,6 +104,23 @@
 <span style="font-weight: bold">&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
 </pre></div>
 </div>
+
+
+<div class="small-left" style="padding: 20px 20px 20px 20px;">
+		This example makes the element with id 'stickymenu' stick to the top with an offset of 100px and unsticks it when below 480px in width
+		</div>
+		
+		<div class="code">
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="font-weight: bold">&lt;</span>script src<span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;jquery.js&quot;</span><span style="font-weight: bold">&gt;&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
+<span style="font-weight: bold">&lt;</span>script src<span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;jquery.stickymenu.js&quot;</span><span style="font-weight: bold">&gt;&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
+<span style="font-weight: bold">&lt;</span>script<span style="font-weight: bold">&gt;</span>
+  $(<span style="color: #999999">document</span>).ready(<span style="font-weight: bold">function</span>(){
+   $(<span style="color: #bb8844">&quot;#stickymenu&quot;</span>).stickymenu({offset: 100, minWidth: 480});
+  });
+<span style="font-weight: bold">&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
+</pre></div>
+</div>
+
 
 <div class="small-left" style="padding: 20px 20px 20px 20px;">
 		This example makes the element with id 'stickymenu' stick to the top and disables animations for any browser.
@@ -147,28 +151,39 @@
 <span style="font-weight: bold">&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
 </pre></div>
 </div>
+
+<div class="small-left" style="padding: 20px 20px 20px 20px;">
+		This example makes the element with id 'stickymenu' stick to the top and changes animation duration when enabled (e.g. on touch devices) to a duration of 1000ms.
+		</div>
 		
+		<div class="code">
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="font-weight: bold">&lt;</span>script src<span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;jquery.js&quot;</span><span style="font-weight: bold">&gt;&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
+<span style="font-weight: bold">&lt;</span>script src<span style="font-weight: bold">=</span><span style="color: #bb8844">&quot;jquery.stickymenu.js&quot;</span><span style="font-weight: bold">&gt;&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
+<span style="font-weight: bold">&lt;</span>script<span style="font-weight: bold">&gt;</span>
+  $(<span style="color: #999999">document</span>).ready(<span style="font-weight: bold">function</span>(){
+   $(<span style="color: #bb8844">&quot;#stickymenu&quot;</span>).stickymenu({duration: 1000});
+  });
+<span style="font-weight: bold">&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
+</pre></div>
+</div>
+
+
+		
+
 		<div class="spacer">&nbsp;</div>
-		<div id="the-end" class="centered">The end! A script by <a href="http://www.abhighosh.co.uk">Abhi Ghosh</a></div>
-		
-		<div class="spacer">&nbsp;</div>
-		
-		<div class="clearfix"></div>
 		</div>
 
+		</div>
+		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 		<script src="js/jquery.stickymenu.js"></script>
         <script type="text/javascript">
 		$("#sticky").stickymenu({offset:0});
 		
-		$("#scroll-down").stickymenu({offset:0});
-		$("#keep-going1").stickymenu({offset:0});
-		$("#keep-going2").stickymenu({offset:0});
-		
-		$("#the-end").stickymenu({offset:130});
+		$("#downloadbar").stickymenu({minWidth:520});
 		</script>
 
-		</div>
+		
     </body>
 </html>
