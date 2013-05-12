@@ -139,7 +139,7 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 		  else{
 		  if (wrapper_clone.css('position') != 'absolute'){
 			  //Stop any previous animation
-				//wrapper_clone.stop(true, false);
+				wrapper_clone.stop(true, false);
 		//Find current distance of element from top
 			var currentTop = wrapper_clone.offset().top;
 			var currentLeft = wrapper_clone.offset().left;
