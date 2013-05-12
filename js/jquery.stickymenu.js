@@ -60,10 +60,9 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 	var stickyLeft = $(element).offset().left;
 	
 	//Get the height, width and float of the sticky element
-	var stickyHeight = $(element).outerHeight();
-	var stickyWidth = $(element).outerWidth();
+	var stickyHeight = $(element).innerHeight();
+	var stickyWidth = $(element).innerWidth();
 	var stickyFloat = $(element).css('float');
-	var stickyMargin = $(element).css('margin');
 	var currentTop = 0;
 	var currentleft = 0;
 	
@@ -71,7 +70,7 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 	var replacementDiv = "sticky-replacement-"+$(element).attr('id');
 	
 	//Insert replacement div before the element with correct replacement attributes.
-	$(element).before("<div id='"+replacementDiv+"' style='display: block; margin: "+stickyMargin+"; padding: 0; height:"+stickyHeight+"px; width:"+stickyWidth+"px; float:"+stickyFloat+"'>&nbsp</div>");
+	$(element).before("<div id='"+replacementDiv+"' style='display: block; margin: 0; padding: 0; height:"+stickyHeight+"px; width:"+stickyWidth+"px; float:"+stickyFloat+"'>&nbsp</div>");
 	
 	//If the top offset is more than 0
 	if(stickyTop>0){

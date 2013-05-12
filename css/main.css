@@ -204,11 +204,16 @@ color: #353535;
 font-family:"Lucida Console", Monaco, monospace;
 }
 
+.center-wrapper{
+width: 190px;
+height: 190px;
+margin: 0 auto;
+}
+
 .centered-image{
 width: 190px;
 height: 190px;
-
-margin: 0 auto;
+float: left;
 }
 
 .align-left{
