@@ -24,6 +24,7 @@
         this._name = pluginName;
 		
 		var offsetFromTop = this.options.offset;
+		var touchUI = false;
 		
 //If not IE6 or older browser and not touch device
 if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' in document)) || (this.options.neverAnimate == true)) {
@@ -43,7 +44,12 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 	
 	//If user has chosen to disable the effect altogether on touch
 	if('ontouchstart' in document && this.options.touchDisable == true){
+	if(this.options.touchDisable == true){
 	disable = true;
+	} 
+	}else{
+		//Otherwise touchUI mode is enabled
+		touchUI = true;
 	}
 
 //Ensure the sticky menu element defined exists in the document
@@ -58,6 +64,8 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 	var stickyWidth = $(element).outerWidth();
 	var stickyFloat = $(element).css('float');
 	var stickyMargin = $(element).css('margin');
+	var currentTop = 0;
+	var currentleft = 0;
 	
 	//Create a name for our replacement div
 	var replacementDiv = "sticky-replacement-"+$(element).attr('id');
@@ -86,9 +94,15 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 		  //Set position to fixed. Set left value for horizontal scrolling support if required.
 		  $(element).css({ position: 'fixed', top: offsetFromTop, left:  stickyLeft-windowLeft});
 		  } else {
-		  
-		  //If animations are enabled, animate from current position to distance user has scrolled
+		  //If animations are enabled and touch UI is not enabled, animate from current position to distance user has scrolled
+		  if (touchUI == false){
 		  $(element).animate({top: windowTop+offsetFromTop}, 200);
+		  } else if($(element).css('position') != 'fixed'){
+			 //If touch UI is enabled, animate, but set position fixed afterwards (unless position already fixed) 
+		  $(element).animate({top: windowTop+offsetFromTop, left: stickyLeft}, 200, function(){
+				$(element).css({ position: 'fixed', top: offsetFromTop, left:  stickyLeft-windowLeft});
+			   });
+		  }
 		  }
 	}
 	  
@@ -101,11 +115,31 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 			  //Set position to absolute, setting left value for horizontal scrolling support if required.
 		  $(element).css({ position: 'absolute', top: stickyTop, left:  stickyLeft});
 		  } else {
-	
-	//Animate from current position to distance user has scrolled
+	//If touchUI is disabled and animations are also enabled, animate from current position to distance user has scrolled
+			   if (touchUI == false){
 	$(element).animate({top: stickyTop}, 200);
+	} else if($(element).css('position') != 'absolute'){
+		//If touch UI is enabled, animate, setting position absolute initially to animate correctly
+		
+		//Find current position
+		var currentTop = $(element).offset().top;
+		var currentLeft = $(element).offset().left;
+		//Set current position as absolute
+		$(element).css({ position: 'absolute', top: currentTop, left: currentLeft});
+		$(element).animate({top: stickyTop, left:stickyLeft}, 200, function(){
+				$(element).css({ position: 'absolute', top: stickyTop, left:stickyLeft});
+			   });
+	}
 		  }
       }
+	  
+	  //Touchdevices: Check user horizontal scroll, continue if 
+	  if(touchUI == true && $(element).css('position') == 'fixed'){
+		  
+		  
+		  $(element).animate({left: stickyLeft-windowLeft}, 200)
+		  }
+	  
     };
 	
 	//Define timer to delay animation
