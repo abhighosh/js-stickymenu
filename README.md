@@ -11,25 +11,25 @@ Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping men
 1. Download latest version of stickymenu.js
 
 2. Include jQuery
-		```javascript
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
-		</script>
-		```
+	```javascript
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+	</script>
+	```
 
 3. Include stickymenu.js with a path to the containing folder
-		```javascript
-		<script src="js/jquery.stickymenu.js">
-		</script>
-		```
+	```javascript
+	<script src="js/jquery.stickymenu.js">
+	</script>
+	```
 
 4. Initialise sticky menu.
-```javascript
-<script>
-$(document).ready(function(){
-$("#stickymenu").stickymenu();
-});
-</script>
-```
+	```javascript
+	<script>
+	$(document).ready(function(){
+	$("#stickymenu").stickymenu();
+	});
+	</script>
+	```
 
 
 ## Features
