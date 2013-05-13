@@ -157,7 +157,7 @@ padding: 0;
 
 .bookmark{
 width: 100%;
-padding-top: 40px;
+padding-top: 10px;
 }
 
 ul{
@@ -165,7 +165,7 @@ margin-bottom:10px !important;
 }
 
 #download{
-padding-top: 80px !important;
+padding-top: 10px !important;
 }
 
 ul li{
@@ -175,11 +175,16 @@ display: inline-block;
 
 ul li a{
 
-height: 20px;
+height: 16px;
 
-font-size: 12px !important;
+font-size: 11px !important;
 text-align: center !important;
-padding: 8px 7px 2px 7px !important;
+padding: 5px 7px 0 7px !important;
+}
+
+ul li a:hover{
+background-color: #f8c63e !important;
+color: #000 !important;
 }
 
 .header{
@@ -188,6 +193,10 @@ font-size: 20px;
 
 .subtitle{
 font-size: 10px;
+}
+
+.mobile-spacer{
+padding-bottom: 30px;
 }
 
 }
@@ -236,7 +245,7 @@ color: #fff;
 
 /* Content styles */
 .centered{
-padding: 70px 0;
+padding: 40px 0 10px 0;
 font-size: 30px;
 text-align: center;
 }
@@ -246,7 +255,7 @@ font-size: 15px;
 }
 
 .small-left{
-padding: 70px 30px 0px 30px;
+padding: 10px 0;
 font-size: 20px;
 text-align: left;
 
@@ -344,10 +353,12 @@ color:#ffffff !important;
 }
 
 .downloadbar{
-padding: 70px 0;
+padding: 0px 10px 10px 0;
 font-size: 30px;
 text-align: center;
 }
+
+
 
 
 

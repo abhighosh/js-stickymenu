@@ -19,7 +19,7 @@ Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping men
 3. Include stickymenu.js with a path to the containing folder
 
 ```javascript
-<script src="js/stickymenu-1.0.0.js"></script>
+<script src="js/jquery.stickymenu.js"></script>
  ```
 
 4. Initialise sticky menu.
@@ -38,6 +38,56 @@ $(document).ready(function(){
 * Touch friendly
 * Cross browser compatible (IE6+, Chrome, Safari, Firefox)
 
-## Examples and options
+## Options
 
-* Examples coming soon!
+Options
+
+This example makes the element with id 'stickymenu' stick to the top with an offset of 100px.
+
+```javascript
+<script>
+$(document).ready(function(){
+   $("#stickymenu").stickymenu({offset: 100px});
+  });
+  </script>
+ ```
+ 
+This example makes the element with id 'stickymenu' stick to the top with an offset of 100px and unsticks it when below 480px in width.
+ 
+ ```javascript
+<script>
+  $(document).ready(function(){
+   $("#stickymenu").stickymenu({offset: 100, minWidth: 480});
+  });
+</script>
+ ```
+ 
+This example makes the element with id 'stickymenu' stick to the top and disables animations for any browser.
+
+```javascript
+<script>
+  $(document).ready(function(){
+   $("#stickymenu").stickymenu({neverAnimate: true});
+  });
+</script>
+ ```
+ 
+This example makes the element with id 'stickymenu' stick to the top and disables sticking if on a touch enabled device.
+
+```javascript
+<script>
+  $(document).ready(function(){
+   $("#stickymenu").stickymenu({touchDisable: true});
+  });
+</script>
+ ```
+ 
+This example makes the element with id 'stickymenu' stick to the top and changes animation duration when enabled (e.g. on touch devices) to a duration of 1000ms.
+
+```javascript
+<script>
+  $(document).ready(function(){
+   $("#stickymenu").stickymenu({duration: 1000});
+  });
+</script>
+ ```

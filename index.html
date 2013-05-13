@@ -36,26 +36,28 @@
 		<img src="images/circle_cross_browser.gif" alt="Scroll down" style="width: 190px; height: 190px"/>
 		<img src="images/circle_scroll_down.gif" alt="Scroll down" style="width: 190px; height: 190px"/>
 		</div>
-
-		<a class="bookmark" id="download">&nbsp;</a>
 		
-		<div id="downloadbar" class="downloadbar" style="padding: 10px 10px 10px 0;">
+		<div class="mobile-spacer">
+		<a class="bookmark" id="download">&nbsp;</a>
+		</div>
+		
+		<div id="downloadbar" class="downloadbar">
 		<a class="btn-primary" href="https://github.com/abhighosh/stickymenu/archive/master.zip">Download plugin</a>
 		<a class="btn-primary" href="https://github.com/abhighosh/stickymenu">Fork on Github</a>
 		</div>
 		
-		<div class="centered" style="padding-top: 10px;">Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping ui elements visible at the top of a page.
+		<div class="centered">Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping ui elements visible at the top of a page.
 		</div>
 		
-		<div class="small-left" style="padding-top: 30px;">
+		<div class="small-left">
 		Unlike other sticky scripts, stickymenu is compatible with responsive layouts and won't break with your css.
 		<br/>
 		Stickymenu animates smoothly on touch devices, and is cross browser compatible (IE6+, Safari, Firefox, Chrome).
 		<br/><br/>
-		
+		</div>
 		<a class="bookmark" id="usage">&nbsp;</a>
-		<div class="centered" style="padding-bottom: 10px;">Instructions</div>
-		
+		<div class="centered">Instructions</div>
+		<div class="small-left">
 		To use simply:
 		<br/>1. Include <a href="http://jquery.com/">jQuery</a>
 		<br/>2. Include stickymenu.js
@@ -64,6 +66,7 @@
 		The following example initialises stickymenu for the element with id 'stickymenu'.
 		<br/><br/>
 		</div>
+		
 		
 		
 		<div class="code">
@@ -76,13 +79,13 @@
 <span style="font-weight: bold">&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
 </pre></div>
 		</div>
-		<div class="small-left" style="padding-top: 20px;">
+		<div class="small-left">
 		*In order to ensure consistent cross-browser behaviour, this script will remove margins from your element. If you wish to add margins, wrap your element in a wrapper div and style this. If you want to offset the element from the top, use the 'offset' option when initialising.
 		</div>
 		
 		<a class="bookmark" id="background">&nbsp;</a>
-		<div class="centered" style="padding-bottom: 10px;">Background</div>
-		<div class="small-left" style="padding: 0 20px 20px 20px;">
+		<div class="centered">Background</div>
+		<div class="small-left">
 		Stickymenu.js was born after being unable to find a sticky menu script that handles touch events in a smooth way. Additionally, almost all such scripts fail to adequately cater to antiquated browsers without position:fixed support such as IE6. Using position:absolute on these browsers leads to a jerky experience.
 		<br/><br/>
 		Stickymenu.js solves these problems by animating elements appropriately when the scroll event is triggered on touch browsers or older browsers, and exploiting absolute and fixed positioning on supported browsers.
@@ -92,9 +95,9 @@
 		
 		
 		<a class="bookmark" id="options">&nbsp;</a>
-		<div class="centered" style="padding-bottom: 10px;">Options</div>
+		<div class="centered">Options</div>
 		
-		<div class="small-left" style="padding: 0 20px 20px 20px;">
+		<div class="small-left">
 		This example makes the element with id 'stickymenu' stick to the top with an offset of 100px.
 		</div>
 		
@@ -110,7 +113,7 @@
 </div>
 
 
-<div class="small-left" style="padding: 20px 20px 20px 20px;">
+<div class="small-left">
 		This example makes the element with id 'stickymenu' stick to the top with an offset of 100px and unsticks it when below 480px in width
 		</div>
 		
@@ -126,7 +129,7 @@
 </div>
 
 
-<div class="small-left" style="padding: 20px 20px 20px 20px;">
+<div class="small-left">
 		This example makes the element with id 'stickymenu' stick to the top and disables animations for any browser.
 		</div>
 		
@@ -141,8 +144,8 @@
 </pre></div>
 </div>
 
-<div class="small-left" style="padding: 20px 20px 20px 20px;">
-		This example makes the element with id 'stickymenu' stick to the top and disables it if on a touch enabled device.
+<div class="small-left">
+		This example makes the element with id 'stickymenu' stick to the top and disables sticking if on a touch enabled device.
 		</div>
 		
 		<div class="code">
@@ -156,7 +159,7 @@
 </pre></div>
 </div>
 
-<div class="small-left" style="padding: 20px 20px 20px 20px;">
+<div class="small-left">
 		This example makes the element with id 'stickymenu' stick to the top and changes animation duration when enabled (e.g. on touch devices) to a duration of 1000ms.
 		</div>
 		
@@ -185,7 +188,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 		<script src="js/jquery.stickymenu.js"></script>
         <script type="text/javascript">
-		$("#sticky").stickymenu({offset:10});
+		$("#sticky").stickymenu({offset:0});
 		
 		$("#downloadbar").stickymenu({minWidth:520});
 		</script>
