@@ -12,14 +12,12 @@ Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping men
 
 2. Include jQuery
 	```javascript
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
-	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	```
 
 3. Include stickymenu.js with a path to the containing folder
 	```javascript
-	<script src="js/jquery.stickymenu.js">
-	</script>
+	<script src="js/jquery.stickymenu.js"></script>
 	```
 
 4. Initialise sticky menu.
@@ -46,7 +44,7 @@ This example makes the element with id 'stickymenu' stick to the top with an off
 $(document).ready(function(){
    $("#stickymenu").stickymenu({offset: 100px});
   });
-  </script>
+</script>
  ```
  
 This example makes the element with id 'stickymenu' stick to the top with an offset of 100px and unsticks it when below 480px in width.
