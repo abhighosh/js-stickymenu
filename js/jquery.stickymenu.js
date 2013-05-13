@@ -60,9 +60,12 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
   if (!!$(element).offset() && disable == false) {
 	
 	  //Create a name for our wrapper
-	 var wrapperDiv = "sticky-replacement-"+$(element).attr('id');
+	 var wrapperDiv = "sticky-wrapper-"+$(element).attr('id');
+	 //Remove margins to ensure consistent cross browser behaviour
+	 $(element).css({'margin' : 0});
+	 
 	 //Wrap our element in the wrapper
-	 var wrapper = $(element).wrap('<div class="'+wrapperDiv+'" />');
+	 var wrapper = $(element).wrap('<div class="'+wrapperDiv+'" />').parent();
 	  
 	//Get and store the initial offset and dimensions of the original element
 	 $.data(wrapper, "stickyLocation", { stickyTop: wrapper.offset().top, stickyLeft: wrapper.offset().left, stickyWidth: wrapper.width(), stickyHeight: wrapper.height() });
@@ -73,27 +76,25 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 	 wrapper.css({'visibility':'hidden'});
 	 wrapper.removeAttr('id');
 	
-	//Set position of clone to absolute
-	 wrapper_clone.css({position: 'absolute', width: $.data(wrapper, "stickyLocation").stickyWidth, height: $.data(wrapper, "stickyLocation").stickyHeight, top: $.data(wrapper, "stickyLocation").stickyTop, left: $.data(wrapper, "stickyLocation").stickyLeft});
-	  
-	
-	 
+	//If element offset from top is 0, set position to fixed and set dimensions appropriately
 	 if($.data(wrapper, "stickyLocation").stickyTop == 0){
 		wrapper_clone.css({position: 'fixed', width: $.data(wrapper, "stickyLocation").stickyWidth, height: $.data(wrapper, "stickyLocation").stickyHeight, top: $.data(wrapper, "stickyLocation").stickyTop, left: $.data(wrapper, "stickyLocation").stickyLeft});
-	}
+		} else {
+	//Otherwise set position of clone to absolute and set dimensions appropriately
+	 wrapper_clone.css({position: 'absolute', width: $.data(wrapper, "stickyLocation").stickyWidth, height: $.data(wrapper, "stickyLocation").stickyHeight, top: $.data(wrapper, "stickyLocation").stickyTop, left: $.data(wrapper, "stickyLocation").stickyLeft}); 
+		}
 	 
 	//The function to call on scrolling
 	var moveElement = function(){
-		//If not under min width
+	//If window width is not under min width, continue
 	if(minWidth<0 || $(window).width()>minWidth){
-		
+	//Set z-index above other elements
 	wrapper_clone.css({'z-index': '9999'});
 		
-		//If the offset is 0, keep the position fixed at all times. This avoids unnecessary calculation and is slightly less jerky in IE
+		//If the offset is 0, keep the position fixed at all times. This is less jerky in IE.
 		if($.data(wrapper, "stickyLocation").stickyTop == 0){
 		wrapper_clone.css({position: 'fixed', width: $.data(wrapper, "stickyLocation").stickyWidth, height: $.data(wrapper, "stickyLocation").stickyHeight, top: $.data(wrapper, "stickyLocation").stickyTop, left: $.data(wrapper, "stickyLocation").stickyLeft});
 		} else {
-		
 		//Returns the distance the user has scrolled top and left
       var windowTop = $(window).scrollTop();
 	  var windowLeft = $(window).scrollLeft();
@@ -101,6 +102,7 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
       if ($.data(wrapper, "stickyLocation").stickyTop < (windowTop+offsetFromTop)){
 		  //If animations disabled
 		  if(animationEnabled == false){
+			  //Set position to fixed
 			   wrapper_clone.css({ position: 'fixed', top: offsetFromTop, left:  $.data(wrapper, "stickyLocation").stickyLeft-windowLeft});
 			   } 
 		  //If animations enabled
@@ -110,19 +112,21 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 					
 				//Stop any previous animation
 				wrapper_clone.stop(true, false);
+				
 				//Calculate current offsets
 				var currentTop = wrapper_clone.offset().top;
 				var currentLeft = wrapper_clone.offset().left;
 				
-				//If user is over the element height below, animate from above the view
-				if ((windowTop-currentTop) > wrapper_clone.outerHeight()){
+				//If user is over the element height below, animate from just above the view
+				if ((windowTop-currentTop) > wrapper_clone.outerHeight()+offsetFromTop){
 					var offsetFrom = -wrapper_clone.outerHeight();
 					} else {var offsetFrom = currentTop - windowTop;}
+
 				//Animate from the calculated offset
-				wrapper_clone.css({ position: 'fixed', top: offsetFrom, left:  currentLeft-windowLeft});
+				wrapper_clone.css({ position: 'fixed', top: offsetFrom, left:  currentLeft});
 				wrapper_clone.animate({top: offsetFromTop, left: $.data(wrapper, "stickyLocation").stickyLeft-windowLeft}, duration);
 				}
-				//If touch UI is disabled, animate using absolute positioning and do not set fixed position afterwards
+				//If touch UI is disabled, animate using absolute positioning
 				if (touchUI == false){
 				 wrapper_clone.animate({top: windowTop+offsetFromTop, left: $.data(wrapper, "stickyLocation").stickyLeft}, duration);  
 			   }
@@ -133,10 +137,11 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 	  else {
 			//If animations are disabled
 		  if(animationEnabled == false){
-		//Set position to absolute as original
+		//Set position to absolute with original position
 		  wrapper_clone.css({ position: 'absolute', top: $.data(wrapper, "stickyLocation").stickyTop, left:  $.data(wrapper, "stickyLocation").stickyLeft});
 		  } 
 		  else{
+			  //If animations are enabled and position is not already absolute
 		  if (wrapper_clone.css('position') != 'absolute'){
 			  //Stop any previous animation
 				wrapper_clone.stop(true, false);
@@ -144,45 +149,59 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 			var currentTop = wrapper_clone.offset().top;
 			var currentLeft = wrapper_clone.offset().left;
 			  
-			//t
-			
+			//Animate using fixed positioning and set position absolutely afterwards
 			wrapper_clone.animate({top: $.data(wrapper, "stickyLocation").stickyTop-windowTop, left:$.data(wrapper, "stickyLocation").stickyLeft-windowLeft}, duration,function(){
 			wrapper_clone.css({ position: 'absolute', top: $.data(wrapper, "stickyLocation").stickyTop, left: $.data(wrapper, "stickyLocation").stickyLeft});
 			});
-			} else {
-				//Replace current position as absolute
+			}
+		  //If animations are enabled and position is already absolute
+		  else {
+		//Replace current position with calculated absolute positions
 		wrapper_clone.css({ position: 'absolute', top: currentTop, left: currentLeft});
-		//Animate to original position
+		//Animate to original position using absolute positioning
 		wrapper_clone.animate({top: $.data(wrapper, "stickyLocation").stickyTop, left:$.data(wrapper, "stickyLocation").stickyLeft}, duration);
 			}
 		  }
 			   }
 	  
 		  }
-		} else{
+		}
+	//If width is below minimum width, set standard z-index
+	else{
 			wrapper_clone.css({'z-index': '1'});
 		}
-		  
-		  
 		  }
 	
+	//Function to run on resizing window
 	var resizeWindow = function(){
-
-					//Get and store the new offset and dimensions of the original element
+	//Get and store the new offset and dimensions of the original wrapper element
 	 $.data(wrapper, "stickyLocation", { stickyTop: wrapper.offset().top, stickyLeft: wrapper.offset().left, stickyWidth: wrapper.width(), stickyHeight: wrapper.height() });
 
-	//If not under min width
+	//If min width not set or width is over minumum width
 		if(minWidth<0 || $(window).width()>minWidth){
+			//Set element z-index to above other elements
 			wrapper_clone.css({'z-index': '9999'});
 
-	 
+	 //If position is absolute
 	 if(wrapper_clone.css('position') != 'fixed'){
+		 //Set position and dimensions according to new offset and dimensions
 	 wrapper_clone.css({position: 'absolute', width: $.data(wrapper, "stickyLocation").stickyWidth, height: $.data(wrapper, "stickyLocation").stickyHeight, top: $.data(wrapper, "stickyLocation").stickyTop, left: $.data(wrapper, "stickyLocation").stickyLeft});
-	 } else{
+	 } 
+	 //If position is fixed
+	 else{
+		 //Set position and dimensions according to new offset and dimensions if not animating already
+		 if( !(wrapper_clone.is(':animated'))) {
 	wrapper_clone.css({ position: 'fixed', width: $.data(wrapper, "stickyLocation").stickyWidth, height: $.data(wrapper, "stickyLocation").stickyHeight, top: offsetFromTop, left:  $.data(wrapper, "stickyLocation").stickyLeft});
-	 }
-	 } else {
+}	
+		 }
+	 } 
+		//If width is under minimum width
+		else {
+		
+		 //Set z-index back to standard
 		 wrapper_clone.css({'z-index': '1'});
+		 
+		 //Set position to absolute and positioning an dimensions to new offset and dimensions
 		 wrapper_clone.css({position: 'absolute', width: $.data(wrapper, "stickyLocation").stickyWidth, height: $.data(wrapper, "stickyLocation").stickyHeight, top: $.data(wrapper, "stickyLocation").stickyTop, left: $.data(wrapper, "stickyLocation").stickyLeft});
 	 }
 	}
@@ -195,7 +214,7 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 	//On window scroll
     $(window).bind('scroll',function () {
 		
-		//If animations are enabled, set the delay for calling our scroll function
+		//If animations are enabled, set the delay for calling our scroll function. Delay is required to avoid repeated calls in IE6.
 		if(animationEnabled == true && touchUI == false){
         clearTimeout(timer);
         timer = setTimeout( moveElement , 50 );
@@ -212,14 +231,15 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 		resizeWindow();
 });
 
-//Load the move menu function on page load
+//If user is using a touch device
 if('ontouchstart' in document){
+	//Set location back to top on refresh
 	$(window).scrollTop(0);
 	} else {
+		//if user is not using a touch event, call move element function
 		moveElement();
 	}
 	}
-        
         this.init();
     }
 

@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <title>Stickymenu - A touch and responsive design friendly sticky menu plugin for jQuery</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
@@ -24,8 +25,9 @@
 		
 		
 		<div class="left-column">
+<div style="margin-top: 20px">
 <ul id="sticky"><li><a href="#download">Download</a></li><li><a href="#usage">Instructions</a></li><li><a href="#background">Background</a></li><li><a href="#options">Options</a></li></ul>
-
+</div>
 </div>
 		<div class="right-column">
 		
@@ -48,7 +50,7 @@
 		<div class="small-left" style="padding-top: 30px;">
 		Unlike other sticky scripts, stickymenu is compatible with responsive layouts and won't break with your css.
 		<br/>
-		Stickymenu is animates smoothly on touch devices, and is cross browser compatible (IE6+, Safari, Firefox, Chrome).
+		Stickymenu animates smoothly on touch devices, and is cross browser compatible (IE6+, Safari, Firefox, Chrome).
 		<br/><br/>
 		
 		<a class="bookmark" id="usage">&nbsp;</a>
@@ -74,7 +76,9 @@
 <span style="font-weight: bold">&lt;</span><span style="color: #a61717; background-color: #e3d2d2">/script&gt;</span>
 </pre></div>
 		</div>
-		
+		<div class="small-left" style="padding-top: 20px;">
+		*In order to ensure consistent cross-browser behaviour, this script will remove margins from your element. If you wish to add margins, wrap your element in a wrapper div and style this. If you want to offset the element from the top, use the 'offset' option when initialising.
+		</div>
 		
 		<a class="bookmark" id="background">&nbsp;</a>
 		<div class="centered" style="padding-bottom: 10px;">Background</div>
@@ -171,6 +175,8 @@
 		
 
 		<div class="spacer">&nbsp;</div>
+		
+		
 		</div>
 
 		</div>
@@ -179,7 +185,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 		<script src="js/jquery.stickymenu.js"></script>
         <script type="text/javascript">
-		$("#sticky").stickymenu({offset:0});
+		$("#sticky").stickymenu({offset:10});
 		
 		$("#downloadbar").stickymenu({minWidth:520});
 		</script>
