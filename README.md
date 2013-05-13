@@ -29,6 +29,7 @@ Stickymenu.js is a lightweight jQuery plugin for neatly and smoothly keeping men
 	</script>
 	```
 
+*In order to ensure consistent cross-browser behaviour, this script will remove margins from your element. If you wish to add margins, wrap your element in a wrapper div and style this. If you want to offset the element from the top, use the 'offset' option when initialising.
 
 ## Features
 
