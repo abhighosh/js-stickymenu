@@ -106,7 +106,7 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 		  //If animations enabled
 		  else {
 				 //If touch UI is enabled, animate using fixed positioning unless position is already fixed
-				if (touchUI == true && element_clone.css('position') != 'fixed'){
+				if (touchUI == true){
 					
 				//Stop any previous animation
 				element_clone.stop(true, false);
@@ -124,6 +124,7 @@ if (((typeof document.body.style.maxHeight != "undefined") && !('ontouchstart' i
 				element_clone.css({ position: 'fixed', top: offsetFrom, left:  currentLeft});
 				element_clone.animate({top: offsetFromTop, left: $.data(element, "stickyLocation").stickyLeft-windowLeft}, duration);
 				}
+				
 				//If touch UI is disabled, animate using absolute positioning
 				if (touchUI == false){
 				 element_clone.animate({top: windowTop+offsetFromTop, left: $.data(element, "stickyLocation").stickyLeft}, duration);  
